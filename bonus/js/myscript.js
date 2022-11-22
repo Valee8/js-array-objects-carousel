@@ -53,6 +53,8 @@ const images = [
 
 const items = document.getElementsByClassName("item");
 
+const itemsThumbnail = document.getElementsByClassName("item-thumbnail");
+
 let activeItem = 0;
 
 images.forEach(elementImages => {
@@ -63,11 +65,18 @@ images.forEach(elementImages => {
             <div class="title">${elementImages.title}</div>
             <div class="text">${elementImages.text}</div>
         </div>    
-    </div>`
+    </div>`;
+
+    document.querySelector(".thumbnails").innerHTML += `
+    <div class="item-thumbnail">
+        <img src="${elementImages.image}">
+    </div>`;
 });
 
 // Aggiungo active al primo elemento
 items[activeItem].classList.add("active");
+
+itemsThumbnail[activeItem].classList.add("active");
 
 // Bottone next
 document.querySelector(".next").addEventListener("click", nextImage);                
@@ -86,9 +95,13 @@ function nextImage() {
 
         items[activeItem].classList.remove("active");
 
+        itemsThumbnail[activeItem].classList.remove("active");
+
         activeItem++;
 
         items[activeItem].classList.add("active");
+
+        itemsThumbnail[activeItem].classList.add("active");
 
     }
 
@@ -98,7 +111,11 @@ function nextImage() {
 
         items[activeItem].classList.add("active");
 
+        itemsThumbnail[activeItem].classList.add("active");
+
         items[images.length - 1].classList.remove("active");
+
+        itemsThumbnail[images.length - 1].classList.remove("active");
 
     }
 }
@@ -108,9 +125,13 @@ function prevImage() {
 
         items[activeItem].classList.remove("active");
 
+        itemsThumbnail[activeItem].classList.remove("active");
+
         activeItem--;
 
         items[activeItem].classList.add("active");
+
+        itemsThumbnail[activeItem].classList.add("active");
 
     }
 
@@ -120,7 +141,11 @@ function prevImage() {
 
         items[activeItem].classList.add("active");
 
+        itemsThumbnail[activeItem].classList.add("active");
+
         items[0].classList.remove("active");
+
+        itemsThumbnail[0].classList.remove("active");
 
     }
 }
