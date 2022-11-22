@@ -10,6 +10,7 @@
 // Milestone 2:
 // Aggiungere il **ciclo infinito** del carosello. Ovvero se l’img attiva è la prima e l’utente clicca la freccia prev, 
 // l’img che deve attivarsi sarà l’ultima e viceversa per l’ultima img se l’utente clicca la freccia next.
+
 // BONUS 1:
 // Aggiungere le thumbnails (sottoforma di miniatura) ed al click attivare l’immagine corrispondente.
 // BONUS 2: Aggiungere funzionalità di autoplay: dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà 
@@ -49,3 +50,80 @@ const images = [
     } 
 
 ];
+
+const items = document.getElementsByClassName("item");
+
+let activeItem = 0;
+
+images.forEach(elementImages => {
+    document.querySelector(".slider").innerHTML += `
+    <div class="item">
+        <img src="${elementImages.image}">
+        <div class="content-item">
+            <div class="title">${elementImages.title}</div>
+            <div class="text">${elementImages.text}</div>
+        </div>    
+    </div>`
+});
+
+// Aggiungo active al primo elemento
+items[activeItem].classList.add("active");
+
+// Bottone next
+document.querySelector(".next").addEventListener("click", 
+    function() {
+
+        if (activeItem < images.length - 1) {
+
+            items[activeItem].classList.remove("active");
+
+            activeItem++;
+
+            items[activeItem].classList.add("active");
+
+        }
+
+        else {
+            
+            activeItem = 0;
+
+            items[activeItem].classList.add("active");
+
+            items[images.length - 1].classList.remove("active");
+
+        }
+
+    }
+);                
+
+
+// Bottone prev
+document.querySelector(".prev").addEventListener("click", 
+    function() {
+
+        if (activeItem <= images.length - 1 && activeItem > 0) {
+
+            items[activeItem].classList.remove("active");
+
+            activeItem--;
+
+            items[activeItem].classList.add("active");
+
+        }
+
+        else {
+
+            activeItem = images.length - 1;
+
+            items[activeItem].classList.add("active");
+
+            items[0].classList.remove("active");
+
+        }
+
+    }
+);
+
+console.log(images);
+
+console.log(items);
