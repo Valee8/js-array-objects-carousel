@@ -57,6 +57,8 @@ const itemsThumbnail = document.getElementsByClassName("item-thumbnail");
 
 let activeItem = 0;
 
+let autoNext;
+
 images.forEach(elementImages => {
     document.querySelector(".slider").innerHTML += `
     <div class="item">
@@ -73,12 +75,15 @@ images.forEach(elementImages => {
     </div>`;
 });
 
-const autoNext = setInterval(nextImage, 3000);
+document.getElementById("start").addEventListener("click", startButton);
+
+document.getElementById("stop").addEventListener("click", stopButton);
 
 // Aggiungo active al primo elemento
 items[activeItem].classList.add("active");
 
 itemsThumbnail[activeItem].classList.add("active");
+
 
 // Bottone next
 document.querySelector(".next").addEventListener("click", nextImage);                
@@ -149,4 +154,12 @@ function prevImage() {
         itemsThumbnail[0].classList.remove("active");
 
     }
+}
+
+function startButton() {
+    autoNext = setInterval(nextImage, 3000);
+}
+
+function stopButton() {
+    clearInterval(autoNext);
 }
