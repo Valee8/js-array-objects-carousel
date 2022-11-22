@@ -73,6 +73,8 @@ images.forEach(elementImages => {
     </div>`;
 });
 
+const autoNext = setInterval(nextImage, 3000);
+
 // Aggiungo active al primo elemento
 items[activeItem].classList.add("active");
 
@@ -83,7 +85,6 @@ document.querySelector(".next").addEventListener("click", nextImage);
 
 // Bottone prev
 document.querySelector(".prev").addEventListener("click", prevImage);
-
 
 console.log(images);
 
