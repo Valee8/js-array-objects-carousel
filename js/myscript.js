@@ -63,7 +63,7 @@ images.forEach(elementImages => {
             <div class="title">${elementImages.title}</div>
             <div class="text">${elementImages.text}</div>
         </div>    
-    </div>`
+    </div>`;
 });
 
 // Aggiungo active al primo elemento
