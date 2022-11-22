@@ -70,60 +70,57 @@ images.forEach(elementImages => {
 items[activeItem].classList.add("active");
 
 // Bottone next
-document.querySelector(".next").addEventListener("click", 
-    function() {
-
-        if (activeItem < images.length - 1) {
-
-            items[activeItem].classList.remove("active");
-
-            activeItem++;
-
-            items[activeItem].classList.add("active");
-
-        }
-
-        else {
-            
-            activeItem = 0;
-
-            items[activeItem].classList.add("active");
-
-            items[images.length - 1].classList.remove("active");
-
-        }
-
-    }
-);                
-
+document.querySelector(".next").addEventListener("click", nextImage);                
 
 // Bottone prev
-document.querySelector(".prev").addEventListener("click", 
-    function() {
+document.querySelector(".prev").addEventListener("click", prevImage);
 
-        if (activeItem <= images.length - 1 && activeItem > 0) {
-
-            items[activeItem].classList.remove("active");
-
-            activeItem--;
-
-            items[activeItem].classList.add("active");
-
-        }
-
-        else {
-
-            activeItem = images.length - 1;
-
-            items[activeItem].classList.add("active");
-
-            items[0].classList.remove("active");
-
-        }
-
-    }
-);
 
 console.log(images);
 
 console.log(items);
+
+
+function nextImage() {
+    if (activeItem < images.length - 1) {
+
+        items[activeItem].classList.remove("active");
+
+        activeItem++;
+
+        items[activeItem].classList.add("active");
+
+    }
+
+    else {
+        
+        activeItem = 0;
+
+        items[activeItem].classList.add("active");
+
+        items[images.length - 1].classList.remove("active");
+
+    }
+}
+
+function prevImage() {
+    if (activeItem <= images.length - 1 && activeItem > 0) {
+
+        items[activeItem].classList.remove("active");
+
+        activeItem--;
+
+        items[activeItem].classList.add("active");
+
+    }
+
+    else {
+
+        activeItem = images.length - 1;
+
+        items[activeItem].classList.add("active");
+
+        items[0].classList.remove("active");
+
+    }
+}
